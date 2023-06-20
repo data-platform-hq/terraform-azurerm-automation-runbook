@@ -79,13 +79,11 @@ module "automation-runbook" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_project"></a> [project](#input\_project)| Project name | `string`| n/a | yes |
-| <a name="input_env"></a> [env](#input\_env)| Environment name | `string` | n/a | yes |
 | <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group)| The name of the resource group | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location)| Azure location | `string` | n/a | yes |
-| <a name="input_suffix"></a> [suffix](#input\_suffix)| Optional suffix that would be added to the end of resources names. It is recommended to use dash at the beginning of variable (e.x., '-example') | `string` | "" | no |
-| <a name="input_automation_account_name"></a> [automation\_account\_name](#input\_automation\_account\_name)| The ID of the Automation Account. | `string` | n/a | yes |
-| <a name="input_runbook"></a> [runbook](#input\_runbook)| Set of objects with parameters to configure runbook and Schedule | <pre>set(object({<br>  name         = optional(string)<br>  description  = optional(string)<br>  script_path  = optional(string)<br>  log_verbose  = optional(bool)<br>  log_progress = optional(bool)<br>  runbook_type = optional(string)<br>  schedule     = optional(set(object({<br>    name          = optional(string)<br>    description   = optional(string)<br>    frequency     = optional(string)<br>    interval      = optional(string)<br>    timezone      = optional(string)<br>    start_time    = optional(string)<br>    week_days     = optional(set(string))<br>    vm            = optional(string)<br>    action        = optional(string)<br>    resourcegroup = optional(string)<br>  })))<br>}))</pre> | <pre>(({<br>  name         = optional(string)<br>  description  = optional(string)<br>  script_path  = optional(string)<br>  log_verbose  = optional(bool, true)<br>  log_progress = optional(bool, true)<br>  runbook_type = optional(string, "PowerShellWorkflow")<br>  schedule     = optional(set(object({<br>    name          = optional(string)<br>    description   = optional(string)<br>    frequency     = optional(string)<br>    interval      = optional(string)<br>    timezone      = optional(string)<br>    start_time    = optional(string)<br>    week_days     = optional(set(string))<br>    vm            = optional(string)<br>    action        = optional(string)<br>    resourcegroup = optional(string)<br>  })))<br>}))</pre> | no |
+| <a name="input_automation_account_name"></a> [automation\_account\_name](#input\_automation\_account\_name)| Automation Account name. | `string` | n/a | yes |
+| <a name="input_runbook"></a> [runbook](#input\_runbook)| Objects with parameters to configure Runbook |<pre>object({<br>  name         = optional(string),<br>  description  = optional(string),<br>  script_path  = optional(string),<br>  content      = optional(string),<br>  log_verbose  = optional(bool, true),<br>  log_progress = optional(bool, true),<br>  runbook_type = optional(string, "PowerShellWorkflow")<br>})</pre> | n/a | no |
+| <a name="input_schedules"></a> [schedules](#input\_schedules)| Set of objects with parameters to configure Schedules for Runbook. | <pre>set(object({<br>  name        = optional(string),<br>  description = optional(string),<br>  frequency   = optional(string, "Week"),<br>  interval    = optional(string, "1"),<br>  start_time  = optional(string, null),<br>  week_days   = optional(list(string), ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]),<br>  parameters  = optional(any, {})<br>}))</pre> | [] | no |
                                                                                                                                                                                                                                                                                                        
 ## Modules
 
@@ -104,7 +102,7 @@ No modules.
 
 | Name                                                                                                                          | Description                                          |
 | ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| <a name="output_runbook"></a> [runbook](#output\_runbook) | Automation Runbook Id |
+| <a name="output_runbook_id"></a> [runbook\_id](#output\_runbook\_id) | Automation Runbook Id |
 <!-- END_TF_DOCS -->
 
 ## License
