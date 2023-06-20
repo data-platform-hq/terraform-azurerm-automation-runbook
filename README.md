@@ -48,7 +48,8 @@ data "azurerm_automation_account" "example" {
 }
 
 module "automation-runbook" {
-  source   = "../modules/runbook"
+  source   = "data-platform-hq/automation-runbook/azurerm"
+  version  = "~> 1.0"
 
   project                 = var.project
   env                     = var.env
