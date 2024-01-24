@@ -13,6 +13,12 @@ variable "automation_account_name" {
   description = "Automation Account name"
 }
 
+variable "tags" {
+  type        = map(any)
+  description = "Resource tags"
+  default     = {}
+}
+
 variable "runbook" {
   type = object({
     name         = optional(string),
