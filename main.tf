@@ -8,6 +8,7 @@ locals {
 resource "azurerm_automation_runbook" "this" {
   name                    = var.runbook.name
   location                = var.location
+  tags                    = var.tags
   resource_group_name     = var.resource_group
   automation_account_name = var.automation_account_name
   log_verbose             = var.runbook.log_verbose
