@@ -64,48 +64,47 @@ module "automation-runbook" {
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-| Name                                                                         | Version   |
-| ---------------------------------------------------------------------------- | --------- |
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform)    | >= 1.0.0  |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm)          | >= 3.40.0 |
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 3.40.0 |
 
 ## Providers
 
-| Name                                                                   | Version |
-| ---------------------------------------------------------------------- | ------- |
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm)          | 3.40.0  |
+| Name | Version |
+|------|---------|
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 3.40.0 |
 
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group)| The name of the resource group | `string` | n/a | yes |
-| <a name="input_location"></a> [location](#input\_location)| Azure location | `string` | n/a | yes |
-| <a name="input_automation_account_name"></a> [automation\_account\_name](#input\_automation\_account\_name)| Automation Account name. | `string` | n/a | yes |
-| <a name="input_runbook"></a> [runbook](#input\_runbook)| Objects with parameters to configure Runbook |<pre>object({<br>  name         = optional(string),<br>  description  = optional(string),<br>  script_path  = optional(string),<br>  content      = optional(string),<br>  log_verbose  = optional(bool, true),<br>  log_progress = optional(bool, true),<br>  runbook_type = optional(string, "PowerShellWorkflow")<br>})</pre> | n/a | no |
-| <a name="input_schedules"></a> [schedules](#input\_schedules)| Set of objects with parameters to configure Schedules for Runbook. | <pre>set(object({<br>  name        = optional(string),<br>  description = optional(string),<br>  frequency   = optional(string, "Week"),<br>  interval    = optional(string, "1"),<br>  start_time  = optional(string, null),<br>  week_days   = optional(list(string), ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]),<br>  parameters  = optional(any, {})<br>}))</pre> | [] | no |
-                                                                                                                                                                                                                                                                                                       
 ## Modules
 
 No modules.
 
 ## Resources
 
-| Name                                                                                                                                                                | Type     |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| [azurerm_automation_runbook.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_runbook)                               | resource |
-| [azurerm_automation_schedule.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_schedule)                             | resource |
-| [azurerm_automation_job_schedule.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_job_schedule)                     | resource |
+| Name | Type |
+|------|------|
+| [azurerm_automation_job_schedule.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_job_schedule) | resource |
+| [azurerm_automation_runbook.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_runbook) | resource |
+| [azurerm_automation_schedule.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/automation_schedule) | resource |
 
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_automation_account_name"></a> [automation\_account\_name](#input\_automation\_account\_name) | Automation Account name | `string` | n/a | yes |
+| <a name="input_location"></a> [location](#input\_location) | Azure location | `string` | n/a | yes |
+| <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group) | Resource group name where Automation Account is located | `string` | n/a | yes |
+| <a name="input_runbook"></a> [runbook](#input\_runbook) | Objects with parameters to configure Runbook | <pre>object({<br>    name         = optional(string),<br>    description  = optional(string),<br>    script_path  = optional(string),<br>    content      = optional(string)<br>    log_verbose  = optional(bool, true),<br>    log_progress = optional(bool, true),<br>    runbook_type = optional(string, "PowerShellWorkflow")<br>  })</pre> | n/a | yes |
+| <a name="input_schedules"></a> [schedules](#input\_schedules) | Set of objects with parameters to configure Schedules for Runbook | <pre>set(object({<br>    name        = optional(string),<br>    description = optional(string),<br>    frequency   = optional(string, "Week"),<br>    interval    = optional(string, "1"),<br>    start_time  = optional(string, null),<br>    week_days   = optional(list(string), ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])<br>    parameters  = optional(any, {})<br>  }))</pre> | `[]` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | Resource tags | `map(any)` | `{}` | no |
 
 ## Outputs
 
-| Name                                                                                                                          | Description                                          |
-| ----------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Name | Description |
+|------|-------------|
 | <a name="output_runbook_id"></a> [runbook\_id](#output\_runbook\_id) | Automation Runbook Id |
 <!-- END_TF_DOCS -->
 
 ## License
 
-Apache 2 Licensed. For more information please see [LICENSE](https://github.com/data-platform-hq/terraform-azurerm-automation-runbook/blob/main/LICENSE)
+Apache 2 Licensed. For more information please see [LICENSE](./LICENSE)
