@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/data-platform-hq/terraform-azurerm-automation-runbook/compare/v1.0.1...v1.1.0) (2024-09-10)
+
+
+### Bug Fixes
+
+* added security KICS scan action ([e899a95](https://github.com/data-platform-hq/terraform-azurerm-automation-runbook/commit/e899a95c247a4a5573071893b654c38a0c8fc7c2))
+* replaced pre-commit repo docs creation/update by GH Actions ([b46882b](https://github.com/data-platform-hq/terraform-azurerm-automation-runbook/commit/b46882b75344d30e62b3f955204d052cdfb32a1f))
+
+
+### Features
+
+* upgrade to AzureRM v4 ([0ea70c1](https://github.com/data-platform-hq/terraform-azurerm-automation-runbook/commit/0ea70c182633ca341ce4fbc40479e99d3a2bda57))
+
 ## [1.0.1](https://github.com/data-platform-hq/terraform-azurerm-automation-runbook/compare/v1.0.0...v1.0.1) (2024-01-24)
 
 
