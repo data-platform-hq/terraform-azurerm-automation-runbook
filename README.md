@@ -66,14 +66,14 @@ module "automation-runbook" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | >= 4.0.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | >= 4.0.1 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.0 |
 
 ## Modules
 
@@ -94,8 +94,8 @@ No modules.
 | <a name="input_automation_account_name"></a> [automation\_account\_name](#input\_automation\_account\_name) | Automation Account name | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Azure location | `string` | n/a | yes |
 | <a name="input_resource_group"></a> [resource\_group](#input\_resource\_group) | Resource group name where Automation Account is located | `string` | n/a | yes |
-| <a name="input_runbook"></a> [runbook](#input\_runbook) | Objects with parameters to configure Runbook | <pre>object({<br>    name         = optional(string),<br>    description  = optional(string),<br>    script_path  = optional(string),<br>    content      = optional(string)<br>    log_verbose  = optional(bool, true),<br>    log_progress = optional(bool, true),<br>    runbook_type = optional(string, "PowerShellWorkflow")<br>  })</pre> | n/a | yes |
-| <a name="input_schedules"></a> [schedules](#input\_schedules) | Set of objects with parameters to configure Schedules for Runbook | <pre>set(object({<br>    name        = optional(string),<br>    description = optional(string),<br>    frequency   = optional(string, "Week"),<br>    interval    = optional(string, "1"),<br>    start_time  = optional(string, null),<br>    week_days   = optional(list(string), ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])<br>    parameters  = optional(any, {})<br>  }))</pre> | `[]` | no |
+| <a name="input_runbook"></a> [runbook](#input\_runbook) | Objects with parameters to configure Runbook | <pre>object({<br/>    name         = optional(string),<br/>    description  = optional(string),<br/>    script_path  = optional(string),<br/>    content      = optional(string)<br/>    log_verbose  = optional(bool, true),<br/>    log_progress = optional(bool, true),<br/>    runbook_type = optional(string, "PowerShellWorkflow")<br/>  })</pre> | n/a | yes |
+| <a name="input_schedules"></a> [schedules](#input\_schedules) | Set of objects with parameters to configure Schedules for Runbook | <pre>set(object({<br/>    name        = optional(string),<br/>    description = optional(string),<br/>    frequency   = optional(string, "Week"),<br/>    interval    = optional(string, "1"),<br/>    start_time  = optional(string, null),<br/>    week_days   = optional(list(string), ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])<br/>    parameters  = optional(any, {})<br/>  }))</pre> | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Resource tags | `map(any)` | `{}` | no |
 
 ## Outputs
