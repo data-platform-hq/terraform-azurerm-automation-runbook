@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/data-platform-hq/terraform-azurerm-automation-runbook/compare/v1.1.0...v1.2.0) (2026-02-02)
+
+
+### Features
+
+* upgrade provider to AzureRM v4.0 ([c3349f5](https://github.com/data-platform-hq/terraform-azurerm-automation-runbook/commit/c3349f552c848a2da5ee2cdb2738d3b71582c344))
+
 # [1.1.0](https://github.com/data-platform-hq/terraform-azurerm-automation-runbook/compare/v1.0.1...v1.1.0) (2024-09-10)
 
 
